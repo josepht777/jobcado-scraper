@@ -6,7 +6,7 @@ link = 'https://www.vietnamworks.com/'
 def getJobInfo(job_link, browser):
     browser.get(job_link)
     soup = BeautifulSoup(browser.page_source, features="html.parser")
-    
+    print('getJobInfo', job_link)
     title = ''
     if len(soup.select('h1.job-title')) > 0:
         title = soup.select('h1.job-title')[0].get_text(strip = True)
@@ -101,16 +101,18 @@ def getJobInfo(job_link, browser):
     )
 
 
-def getJobList(browser, URL):
-    browser.get(URL)
-    soup = BeautifulSoup(browser.page_source, features="html.parser")
+def getJobList(browser, URL_list):
+    for URL in URL_list:
+        browser.get(URL)
+        soup = BeautifulSoup(browser.page_source, features="html.parser")
 
-    job_elements = soup.select('div.job-info-wrapper')
+        job_elements = soup.select('div.job-info-wrapper')
 
-    for job_element in job_elements:
-        job_link = link + job_element.select('a.job-title')[0]['href']
-        getJobInfo(job_link, browser)
-        time.sleep(1)
+        for job_element in job_elements:
+            job_link = link + job_element.select('a.job-title')[0]['href']
+            getJobInfo(job_link, browser)
+            time.sleep(1)
+    print('List finished')
 
 def run(browser, search_terms_list):
     URL_List = []
@@ -120,11 +122,11 @@ def run(browser, search_terms_list):
     # https://www.vietnamworks.com/tim-viec-lam/tat-ca-viec-lam?filtered=true
 
     # https://www.vietnamworks.com/tim-viec-lam/tat-ca-viec-lam?filtered=true&page=2
-    for i in range(2, 201):
+    for i in range(2, 50):
         URL_List.append("https://www.vietnamworks.com/tim-viec-lam/tat-ca-viec-lam?filtered=true&page=" + str(i))
 
     try:
-        print('vietnamworks', search_term)
+        print('vietnamworks', search_term)  
         getJobList(browser, URL_List)
         time.sleep(1)
     finally:

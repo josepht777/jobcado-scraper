@@ -214,7 +214,7 @@ def run(browser, search_terms_list):
     # for search_term in search_terms_list:
     #     URL_List.append(link + search_term.replace("+","").replace(" ", "-").replace("/", ""))
     # URL_List.append("https://www.topcv.vn/tim-viec-lam-moi-nhat")
-    for i in range(300, 400):
+    for i in range(2, 400):
         URL_List.append("https://www.topcv.vn/tim-viec-lam-moi-nhat?salary=0&exp=0&sort=top_related&page="+ str(i))
     try:
         # print('topcv', search_term)

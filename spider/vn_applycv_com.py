@@ -99,7 +99,7 @@ def getJobList(URL, browser):
             time.sleep(2)
     
     
-def run(browser):
+def run(browser, search_terms_list):
     URL_List = []
     URL_List.append("https://vn.applycv.com/viec-lam")
     for page in range(2, 8000): #20000
