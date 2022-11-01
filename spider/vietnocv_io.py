@@ -63,6 +63,7 @@ def getJobInfo(job_link, browser):
     post_date = ''
     
     benefits = ''
+    weight = 1
     api.insert(
         title,
         job_link,
@@ -78,7 +79,8 @@ def getJobInfo(job_link, browser):
         post_date,
         deadline,
         language,
-        # benefits
+        benefits,
+        weight
     )
     
 def getJobList(browser):

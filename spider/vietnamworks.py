@@ -87,6 +87,7 @@ def getJobInfo(job_link, browser):
         title,
         job_link,
         description,
+        '',
         requirement,
         company_name,
         company_description,
@@ -94,10 +95,10 @@ def getJobInfo(job_link, browser):
         company_size,
         company_logo,
         salary,
-        benefits,
         post_date,
         deadline,
         language,
+        benefits,
         weight
     )
     # api.insert(

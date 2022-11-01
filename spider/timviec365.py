@@ -146,6 +146,7 @@ def getJobInfo(job_link, browser):
     # div.right_tit
     # div.dd_tuyen
 
+    weight = 1
     api.insert(
         title,
         job_link,
@@ -161,7 +162,8 @@ def getJobInfo(job_link, browser):
         post_date,
         deadline,
         language,
-        # benefits
+        benefits,
+        weight
     )
 
 

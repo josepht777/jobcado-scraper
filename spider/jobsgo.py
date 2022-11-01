@@ -98,6 +98,7 @@ def getJobInfo(browser, job_link):
                     if(soup.find_all('img', alt=company_name)[0]):
                         company_logo = soup.find_all('img', alt=company_name)[0].get('data-src') or soup.find_all('img', alt=company_name)[0].get('src')
     # print('Company logo >>>', company_logo)
+    weight = 1
     api.insert(
         title,
         job_link,
@@ -113,7 +114,8 @@ def getJobInfo(browser, job_link):
         post_date,
         deadline,
         language,
-        # benefits
+        benefits,
+        weight
     )
     return
 

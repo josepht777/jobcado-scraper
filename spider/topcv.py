@@ -126,6 +126,7 @@ def getJobInfo(browser, job_link):
         company_logo = soup.select('img.img-responsive')[0]['src']
 
     # print('Company logo >>>', company_logo)
+    weight = 1
     api.insert(
         title,
         job_link,
@@ -141,7 +142,8 @@ def getJobInfo(browser, job_link):
         post_date,
         deadline,
         language,
-        # benefits
+        benefits,
+        weight
     )
 
 def getJobListFromPagination(browser, URL):

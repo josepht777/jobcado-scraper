@@ -67,6 +67,7 @@ def getJobInfo(job_link, browser):
             if label == 'Hạn nộp hồ sơ':
                 deadline = value           
     benefits = ''
+    weight = 1
     api.insert(
         title,
         job_link,
@@ -82,7 +83,8 @@ def getJobInfo(job_link, browser):
         post_date,
         deadline,
         language,
-        # benefits
+        benefits,
+        weight
     )
     
 def getJobList(URL, browser):    
