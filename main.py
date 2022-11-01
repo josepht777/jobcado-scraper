@@ -112,66 +112,66 @@ list_of_functions = [
     # careerbuilder.run #ip blocked
     ]
 
-try:
-    thread_list = []
-    for f in list_of_functions:
-        x = threading.Thread(target=f, args=(browser, search_terms_list))
-        thread_list.append(x)
+# try:
+#     thread_list = []
+#     for f in list_of_functions:
+#         x = threading.Thread(target=f, args=(browser, search_terms_list))
+#         thread_list.append(x)
 
-    for thread in thread_list:
-        thread.start()
-finally:
-    print('Finished')
-    time.sleep(24 * 60 * 60)
+#     for thread in thread_list:
+#         thread.start()
+# finally:
+#     print('Finished')
+#     time.sleep(24 * 60 * 60)
 
 # Single-threading
-# while True:
-    # try:
-    #     # timviec365.run(browser, search_terms_list)
-    #     print('start vn_applycv_com')
-    #     # vn_applycv_com.run(browser)
-    #     print('finish vn_applycv_com')
-    # finally:
-    #     # time.sleep(24 * 60 * 60)
-    #     try:
-    #         print('timviecnhanh start')
-    #         # timviecnhanh.run(browser, search_terms_list)
-    #         print('timviecnhanh finish')
-    #     finally:
-    #         try:
-    #             print('careerlink start')
-    #             # careerlink_jobs.run(browser, search_terms_list)
-    #             print('careerlink finish')
-    #         finally:
-    #             try:
-    #                 print('start topcv')
-    #                 # topcv.run(browser, search_terms_list)
-    #                 print('finish topcv')
-    #             finally:
-    #                 try:
-    #                     print('timviec start')
-    #                     # timviec.run(browser, search_terms_list)
-    #                     print('timviec finish')
-    #                 finally:
-    #                     try:
-    #                         print('start jobsgo')
-    #                         # jobsgo.run(browser, search_terms_list)
-    #                         print('finish jobsgo')
-    #                     finally:
-    #                         try:
-    #                             print('start vietnocv_io')
-    #                             # Requires login, currently we have no login system that would not be tracked but we could create a junk email for a one off.
-    #                             # vietnocv_io.run(browser, search_terms_list)
-    #                             print('finish vietnocv_io')
-    #                         finally:
-    #                             try:
-    #                                 print('start vietnamworks')
-    #                                 vietnamworks.run(browser, search_terms_list)
-    #                                 print('finish vietnamworks')
-    #                             finally:
-    #                                 try:
-    #                                     print('careerbuilder start')
-    #                                     # careerbuilder.run(browser, search_terms_list.reverse())
-    #                                     print('careerbuilder finish')
-    #                                 finally:
-    #                                     time.sleep(24 * 60 * 60)
+while True:
+    try:
+        # timviec365.run(browser, search_terms_list)
+        print('start vn_applycv_com')
+        # vn_applycv_com.run(browser)
+        print('finish vn_applycv_com')
+    finally:
+        # time.sleep(24 * 60 * 60)
+        try:
+            print('timviecnhanh start')
+            # timviecnhanh.run(browser, search_terms_list)
+            print('timviecnhanh finish')
+        finally:
+            try:
+                print('careerlink start')
+                # careerlink_jobs.run(browser, search_terms_list)
+                print('careerlink finish')
+            finally:
+                try:
+                    print('start topcv')
+                    # topcv.run(browser, search_terms_list)
+                    print('finish topcv')
+                finally:
+                    try:
+                        print('timviec start')
+                        # timviec.run(browser, search_terms_list)
+                        print('timviec finish')
+                    finally:
+                        try:
+                            print('start jobsgo')
+                            # jobsgo.run(browser, search_terms_list)
+                            print('finish jobsgo')
+                        finally:
+                            try:
+                                print('start vietnocv_io')
+                                # Requires login, currently we have no login system that would not be tracked but we could create a junk email for a one off.
+                                # vietnocv_io.run(browser, search_terms_list)
+                                print('finish vietnocv_io')
+                            finally:
+                                try:
+                                    print('start vietnamworks')
+                                    vietnamworks.run(browser, search_terms_list)
+                                    print('finish vietnamworks')
+                                finally:
+                                    try:
+                                        print('careerbuilder start')
+                                        # careerbuilder.run(browser, search_terms_list.reverse())
+                                        print('careerbuilder finish')
+                                    finally:
+                                        time.sleep(24 * 60 * 60)

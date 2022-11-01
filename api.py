@@ -31,8 +31,8 @@ def insert(
     salary,
     post_date,
     deadline,
-    language
-    # benefits
+    language,
+    benefits
 ):
     token = login()
 
@@ -54,8 +54,8 @@ def insert(
         "company_logo": company_logo,
         "salary": salary,
         "post_date": post_date,
-        "language": language
-        # "benefits": benefits
+        "language": language,
+        "benefits": benefits
     }
 
     url = 'https://api.jobcado.com/job/add'

@@ -28387,3 +28387,20 @@ console.warn: LoginRecipes: "Falling back to a synchronous message for: https://
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.careerlink.vn."
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://timviec.com.vn."
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://timviec.com.vn."
+1667197810858	geckodriver	INFO	Listening on 127.0.0.1:52871
+1667197813933	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "52872" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Shaun\\AppData\\Local\\Temp\\rust_mozprofileLxvotU"
+*** You are running in headless mode.
+1667197814362	Marionette	INFO	Marionette enabled
+1667197814366	Marionette	INFO	Listening on port 52881
+Read port: 52881
+WebDriver BiDi listening on ws://127.0.0.1:52872
+1667197814462	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Shaun\\AppData\\Local\\Temp\\rust_mozprofileLxvotU\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52872/devtools/browser/42275571-f812-4839-b45a-907d3fad587d
+JavaScript warning: https://www.vietnamworks.com/js/jquery/jquery-1.10.2.min.js, line 2: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+JavaScript error: https://www.vietnamworks.com//nhan-vien-dinh-gia-1587287-jv/?source=searchResults&searchType=2&placement=1587288&sortBy=date, line 284: TypeError: reactComponents.InitPopupNewUserUMD is not a constructor
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.vietnamworks.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.vietnamworks.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.vietnamworks.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.vietnamworks.com."

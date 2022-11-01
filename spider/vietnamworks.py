@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import time
 import api
+import db
 link = 'https://www.vietnamworks.com/'
 
 def getJobInfo(job_link, browser):
@@ -82,11 +83,11 @@ def getJobInfo(job_link, browser):
     # print('post_date >>>', post_date, language)
     
     benefits = ''
-    api.insert(
+    weight = 1
+    db.insert(
         title,
         job_link,
         description,
-        '',
         requirement,
         company_name,
         company_description,
@@ -94,11 +95,29 @@ def getJobInfo(job_link, browser):
         company_size,
         company_logo,
         salary,
+        benefits,
         post_date,
         deadline,
         language,
-        # benefits
+        weight
     )
+    # api.insert(
+    #     title,
+    #     job_link,
+    #     description,
+    #     '',
+    #     requirement,
+    #     company_name,
+    #     company_description,
+    #     location,
+    #     company_size,
+    #     company_logo,
+    #     salary,
+    #     post_date,
+    #     deadline,
+    #     language,
+    #     # benefits
+    # )
 
 
 def getJobList(browser, URL_list):

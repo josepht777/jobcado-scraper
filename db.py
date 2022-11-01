@@ -1,129 +1,143 @@
 import psycopg2
 from psycopg2 import Error
-from googletrans import Translator
+from unidecode import unidecode
 
+def normalize_str( text: str ) -> str:
+    """"""
+    if text:
+        return unidecode( text.strip() ).lower()
 
-def translate(text):
-    if text == '':
-        return ''
-    
-    translator = Translator()
-    return str(translator.translate(text, src='vi', dest='en').text)
+    return text
 
 def insert(
-    title,
-    link,
-    description,
-    category,
-    requirement,
-    company_name,
-    company_description,
-    location,
-    company_size,
-    company_logo,
-    salary,
-    post_date,
-    deadline,
-    language
+    title: str,
+    link: str,
+    description: str,
+    category: str,
+    requirement: str,
+    company_name: str,
+    company_description: str,
+    location: str,
+    company_size: str,
+    company_logo: str,
+    salary: str,
+    benefits: str,
+    post_date: str,
+    deadline: str,
+    language: str,
+    weight: int = 0,
 ):
+    """"""
     try:
         # Connect to an existing database
-        connection = psycopg2.connect(user="jcuser",
-                                    password="string",
-                                    host="localhost",
-                                    port="5432",
-                                    database="jc")
+        conn = psycopg2.connect(
+                    user="jcuser",
+                    password="string",
+                    host="localhost",
+                    port="5432",
+                    database="jc"
+                )
+        with conn:
+            # Create a cursor to perform database operations
+            with conn.cursor() as cursor:
+                # BEGIN is executed, a transaction is started
 
-        # Create a cursor to perform database operations
-        cursor = connection.cursor()
-        
-        sql = """
-            INSERT INTO "job"(
-	            title,
-	            link,
-	            description,
-	            category,
-	            requirement,
-	            company_name,
-	            company_description,
-	            location,
-	            company_size,
-	            company_logo,
-	            salary,
-	            post_date,
-                deadline,
-	            language,
-                title_en,
-                description_en,
-                category_en,
-                requirement_en,
-                company_name_en,
-                company_description_en,
-                location_en,
-                salary_en,
-                language_en
-            )
-	        VALUES (
-                %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-                %s,
-                %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-	            %s,
-                %s
-            );
-        """
-        
-        data = (
-            title,
-            link,
-            description,
-            category,
-            requirement,
-            company_name,
-            company_description,
-            location,
-            company_size,
-            company_logo,
-            salary,
-            post_date,
-            deadline,
-            language,
-            translate(title),
-            translate(description),
-            translate(category),
-            translate(requirement),
-            translate(company_name),
-            translate(company_description),
-            translate(location),
-            translate(salary),
-            translate(language)
-        )
-        
-        cursor.execute(sql, data)
-        connection.commit()
-        
+                # Insert into 'jobs' table sql string.
+                sql = """
+                    INSERT INTO "jobs"(
+                        title,
+                        title_una,
+                        link,
+                        description,
+                        description_una,
+                        category,
+                        category_una,
+                        requirement,
+                        requirement_una,
+                        company_name,
+                        company_name_una,
+                        company_description,
+                        company_description_una,
+                        location,
+                        location_una,
+                        company_size,
+                        company_logo,
+                        salary,
+                        salary_una,
+                        benefits,
+                        benefits_una,
+                        post_date,
+                        deadline,
+                        language,
+                        language_una,
+                        weight
+                    ) 
+                    VALUES (
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s,
+                        %s
+                    );
+                """
+                # data holds values to insert.
+                data = (
+                    title.strip(),
+                    normalize_str( title ),
+                    link.strip(),
+                    description.strip(),
+                    normalize_str( description ),
+                    category.strip(),
+                    normalize_str( category ),
+                    requirement.strip(),
+                    normalize_str( requirement ),
+                    company_name.strip(),
+                    normalize_str( company_name ),
+                    company_description.strip(),
+                    normalize_str( company_description ),
+                    location.strip(),
+                    normalize_str( location ),
+                    company_size.strip(),
+                    company_logo.strip(),
+                    salary.strip(),
+                    normalize_str( salary ),
+                    benefits.strip(),
+                    normalize_str( benefits ),
+                    post_date.strip(),
+                    deadline.strip(),
+                    language.strip(),
+                    normalize_str( language ),
+                    weight,
+                )
+                
+                cursor.execute(sql, data)
+            # End of with(cursor)  
+        # End of with(conn) transaction COMMIT/ROLLBACK(exception)
     except (Exception, Error) as error:
         print("Error while connecting to PostgreSQL", error)
-
     finally:
-        if connection:
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed")
+        # Close the connection.
+        conn.close()
+
+    print("PostgreSQL connection is closed")
